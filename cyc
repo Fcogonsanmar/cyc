@@ -1,1 +1,1 @@
-echo "Consumo desde GIT"
+whoami > /tmp/prueba_git
